@@ -32,10 +32,9 @@ jobs:
           };
 
           export const dashboardURLs = {
-            fall2024: "${{ secrets.FALL2024_TABLEAU_URL }}",
-            spring2025: "${{ secrets.SPRING2025_TABLEAU_URL }}",
-            fall2025: "${{ secrets.FALL2025_TABLEAU_URL }}",
-            spring2026: "${{ secrets.SPRING2026_TABLEAU_URL }}"
+            spring2025: "${{ secrets.SPRING2025 }}",
+            fall2025: "${{ secrets.FALL2025 }}",
+            spring2026: "${{ secrets.SPRING2026 }}"
           };
           EOF
 
