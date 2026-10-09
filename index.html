@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>CRIPT Dashboard Portal</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -22,6 +24,7 @@
       padding: 0 20px;
     }
 
+    /* Header */
     .hero {
       background: #ffffff;
       border-radius: 18px;
@@ -40,6 +43,7 @@
       color: #4b5563;
     }
 
+    /* Semester buttons */
     .nav-buttons {
       display: flex;
       gap: 14px;
@@ -67,6 +71,7 @@
       color: #ffffff;
     }
 
+    /* Dashboard container */
     .dashboard-panel {
       display: none;
       background: #ffffff;
@@ -80,12 +85,7 @@
       display: block;
     }
 
-    .panel-note {
-      margin: 0 0 12px;
-      color: #6b7280;
-      font-size: 0.95rem;
-    }
-
+    /* Tableau iframe */
     .tableau-frame {
       width: 100%;
       height: 680px;
@@ -94,6 +94,7 @@
       background: #f9fafb;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       color: #6b7280;
@@ -101,13 +102,28 @@
       font-size: 0.95rem;
     }
 
+    /* Mobile */
     @media (max-width: 768px) {
+      .container {
+        margin: 20px auto;
+        padding: 0 12px;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
       .tab-button {
         width: 100%;
       }
 
       .dashboard-panel {
         min-height: 560px;
+        padding: 10px;
       }
 
       .tableau-frame {
@@ -116,31 +132,53 @@
     }
   </style>
 </head>
+
 <body>
+
   <div class="container">
+
+    <!-- Header -->
     <section class="hero">
       <h1>CRIPT Dashboard Portal</h1>
       <p>Select a dashboard below.</p>
     </section>
 
+
+    <!-- Semester Navigation -->
     <div class="nav-buttons">
-      <button class="tab-button active" onclick="showDashboard('spring2025', this)">
+
+      <button
+        class="tab-button active"
+        onclick="showDashboard('spring2025', this)">
         2025 Spring
       </button>
-      <button class="tab-button" onclick="showDashboard('fall2025', this)">
+
+      <button
+        class="tab-button"
+        onclick="showDashboard('fall2025', this)">
         2025 Fall
       </button>
-      <button class="tab-button" onclick="showDashboard('spring2026', this)">
+
+      <button
+        class="tab-button"
+        onclick="showDashboard('spring2026', this)">
         2026 Spring
       </button>
-      <button class="tab-button" onclick="showDashboard('fall2026', this)">
+
+      <button
+        class="tab-button"
+        onclick="showDashboard('fall2026', this)">
         2026 Fall
       </button>
+
     </div>
 
-    <section id="spring2025" class="dashboard-panel active">
-     
-      </p>
+
+    <!-- 2025 Spring -->
+    <section
+      id="spring2025"
+      class="dashboard-panel active">
+
       <iframe
         class="tableau-frame"
         data-src="https://public.tableau.com/views/GotFluToo2025Spring-Internal/Story1?:showVizHome=no"
@@ -148,11 +186,15 @@
         loading="lazy"
         allowfullscreen>
       </iframe>
+
     </section>
 
-    <section id="fall2025" class="dashboard-panel">
-    
-      </p>
+
+    <!-- 2025 Fall -->
+    <section
+      id="fall2025"
+      class="dashboard-panel">
+
       <iframe
         class="tableau-frame"
         data-src="https://public.tableau.com/views/GotFluToo_2025_Fall-Internal/Story1?:showVizHome=no"
@@ -160,11 +202,15 @@
         loading="lazy"
         allowfullscreen>
       </iframe>
+
     </section>
 
-    <section id="spring2026" class="dashboard-panel">
-   
-      </p>
+
+    <!-- 2026 Spring -->
+    <section
+      id="spring2026"
+      class="dashboard-panel">
+
       <iframe
         class="tableau-frame"
         data-src="https://public.tableau.com/views/GotFluToo_2026_Spring-Internal/Story1?:showVizHome=no"
@@ -172,51 +218,109 @@
         loading="lazy"
         allowfullscreen>
       </iframe>
+
     </section>
 
-    <section id="fall2026" class="dashboard-panel">
-      
-      </p>
+
+    <!-- 2026 Fall -->
+    <section
+      id="fall2026"
+      class="dashboard-panel">
+
       <iframe
         class="tableau-frame"
-        data-src="https://public.tableau.com/views/GotFluToo_2026_Fall-Internal/Story1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+        data-src="https://public.tableau.com/views/GotFluToo_2026_Fall-Internal/Story1?:showVizHome=no"
         title="2026 Fall Dashboard"
         loading="lazy"
         allowfullscreen>
       </iframe>
+
     </section>
 
+
+    <!-- Footer -->
     <footer>
-      Dashboard portal
+      CRIPT Dashboard Portal
     </footer>
+
   </div>
 
+
   <script>
+
+    /*
+      Load a Tableau dashboard only when the user
+      opens that semester.
+    */
     function loadIframe(panel) {
+
       const iframe = panel.querySelector("iframe");
+
       if (iframe && !iframe.src) {
         iframe.src = iframe.dataset.src;
       }
+
     }
 
+
+    /*
+      Switch between semester dashboards.
+    */
     function showDashboard(id, button) {
-      const panels = document.querySelectorAll(".dashboard-panel");
-      const buttons = document.querySelectorAll(".tab-button");
 
-      panels.forEach(panel => panel.classList.remove("active"));
-      buttons.forEach(btn => btn.classList.remove("active"));
+      const panels =
+        document.querySelectorAll(".dashboard-panel");
 
-      const activePanel = document.getElementById(id);
+      const buttons =
+        document.querySelectorAll(".tab-button");
+
+
+      // Hide all dashboards
+      panels.forEach(function(panel) {
+        panel.classList.remove("active");
+      });
+
+
+      // Remove active style from buttons
+      buttons.forEach(function(btn) {
+        btn.classList.remove("active");
+      });
+
+
+      // Show selected dashboard
+      const activePanel =
+        document.getElementById(id);
+
       activePanel.classList.add("active");
+
+
+      // Highlight selected button
       button.classList.add("active");
 
+
+      // Load Tableau dashboard if needed
       loadIframe(activePanel);
+
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const defaultPanel = document.getElementById("spring2025");
-      loadIframe(defaultPanel);
-    });
+
+    /*
+      Load the default dashboard
+      when the page first opens.
+    */
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        const defaultPanel =
+          document.getElementById("spring2025");
+
+        loadIframe(defaultPanel);
+
+      }
+    );
+
   </script>
+
 </body>
 </html>
