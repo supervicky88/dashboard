@@ -148,7 +148,7 @@
     <div class="nav-buttons">
 
       <button
-        class="tab-button active"
+        class="tab-button"
         onclick="showDashboard('spring2025', this)">
         2025 Spring
       </button>
@@ -166,7 +166,7 @@
       </button>
 
       <button
-        class="tab-button"
+        class="tab-button active"
         onclick="showDashboard('fall2026', this)">
         2026 Fall
       </button>
@@ -177,7 +177,7 @@
     <!-- 2025 Spring -->
     <section
       id="spring2025"
-      class="dashboard-panel active">
+      class="dashboard-panel">
 
       <iframe
         class="tableau-frame"
@@ -225,7 +225,7 @@
     <!-- 2026 Fall -->
     <section
       id="fall2026"
-      class="dashboard-panel">
+      class="dashboard-panel active">
 
       <iframe
         class="tableau-frame"
@@ -313,7 +313,7 @@
       function() {
 
         const defaultPanel =
-          document.getElementById("spring2025");
+          document.getElementById("fall2026");
 
         loadIframe(defaultPanel);
 
