@@ -19,7 +19,6 @@
     }
 
     .container {
-      width: 98%;
       max-width: 1100px;
       margin: 32px auto;
       padding: 0 20px;
@@ -79,6 +78,7 @@
       border-radius: 18px;
       padding: 18px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      min-height: 720px;
     }
 
     .dashboard-panel.active {
@@ -88,7 +88,7 @@
     /* Tableau iframe */
     .tableau-frame {
       width: 100%;
-      height: 900;
+      height: 680px;
       border: none;
       border-radius: 12px;
       background: #f9fafb;
@@ -121,6 +121,14 @@
         width: 100%;
       }
 
+      .dashboard-panel {
+        min-height: 560px;
+        padding: 10px;
+      }
+
+      .tableau-frame {
+        height: 520px;
+      }
     }
   </style>
 </head>
@@ -221,7 +229,7 @@
 
       <iframe
         class="tableau-frame"
-        data-src="https://public.tableau.com/views/GotFluToo_2026_Fall-Internal/Story1?:showVizHome=no&:showTabs=false&:toolbar=no&:fit=entire"
+        data-src="https://public.tableau.com/views/GotFluToo_2026_Fall-Internal/Story1?:showVizHome=no"
         title="2026 Fall Dashboard"
         loading="lazy"
         allowfullscreen>
